@@ -8,8 +8,12 @@
 import SwiftUI
 
 struct LoginView: View {
+    
+    @State private var email = ""
+    @State private var password = ""
+    
     var body: some View {
-        // Wrap in a NavigationStack because we want to be able to move between the LoginView and SignUpView.
+        // Wrap in a NavigationStack because we want to be able to move between the LoginView and RegistrationView.
         NavigationStack {
             VStack {
                 // MARK: Image
@@ -20,12 +24,45 @@ struct LoginView: View {
                     .padding(.vertical, 32)
                 
                 // MARK: Form Fields
+                VStack(spacing: 24) {
+                    InputView(text: $email, title: "Email", placeholder: "name@hopper.com")
+                        .autocapitalization(.none)
+                    InputView(text: $password, title: "Password", placeholder: "Enter your password", isSecureField: true)
+                }
+                .padding(.horizontal)
+                .padding(.top, 12)
                 
                 // MARK: Sign In Button
+                Button {
+                    print("Log user in...")
+                } label: {
+                    HStack {
+                        Text("SIGN IN")
+                            .fontWeight(.semibold)
+                        Image(systemName: "arrow.right")
+                    }
+                    .foregroundColor(.white)
+                    // This button will have 16 pixels of padding on either side.
+                    .frame(width: UIScreen.main.bounds.width - 32, height: 48)
+                }
+                .background(Color(.systemPink))
+                .cornerRadius(10)
+                .padding(.top, 24)
                 
                 Spacer()
                 
                 // MARK: Sign Up Button
+                NavigationLink {
+                    
+                } label: {
+                    HStack(spacing: 3) {
+                        Text("Don't have an account?")
+                        Text("Sign Up")
+                            .fontWeight(.bold)
+                    }
+                    .font(.system(size: 14))
+                    .foregroundColor(.pink)
+                }
             }
         }
     }

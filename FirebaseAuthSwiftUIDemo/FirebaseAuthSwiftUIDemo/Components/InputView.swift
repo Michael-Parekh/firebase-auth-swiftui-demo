@@ -10,7 +10,7 @@ import SwiftUI
 // Reusable component for form fields.
 struct InputView: View {
     
-    // Binding means that we are indicating that the value of a property is controlled externally, and changes to that property should be reflected outside of the current scope.
+    // Binding indicates that the value of a property is controlled externally, and changes to that property should be reflected outside of the current scope.
     @Binding var text: String
     let title: String
     let placeholder: String
