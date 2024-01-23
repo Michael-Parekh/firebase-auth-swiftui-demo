@@ -16,6 +16,7 @@
 		73D97C0C2B5F36A40009670A /* RegistrationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73D97C0B2B5F36A40009670A /* RegistrationView.swift */; };
 		73D97C0E2B5F41900009670A /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73D97C0D2B5F41900009670A /* ProfileView.swift */; };
 		73D97C102B5F6EFD0009670A /* SettingsRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73D97C0F2B5F6EFD0009670A /* SettingsRowView.swift */; };
+		73D97C122B5F81680009670A /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73D97C112B5F81680009670A /* User.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -29,6 +30,7 @@
 		73D97C0B2B5F36A40009670A /* RegistrationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationView.swift; sourceTree = "<group>"; };
 		73D97C0D2B5F41900009670A /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
 		73D97C0F2B5F6EFD0009670A /* SettingsRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsRowView.swift; sourceTree = "<group>"; };
+		73D97C112B5F81680009670A /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -82,6 +84,7 @@
 		73D97C002B5F19720009670A /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				73D97C112B5F81680009670A /* User.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -212,6 +215,7 @@
 				73D97C0A2B5F1EFC0009670A /* InputView.swift in Sources */,
 				73D97BF52B5F18DE0009670A /* ContentView.swift in Sources */,
 				73D97BF32B5F18DE0009670A /* FirebaseAuthSwiftUIDemoApp.swift in Sources */,
+				73D97C122B5F81680009670A /* User.swift in Sources */,
 				73D97C0E2B5F41900009670A /* ProfileView.swift in Sources */,
 				73D97C0C2B5F36A40009670A /* RegistrationView.swift in Sources */,
 				73D97C102B5F6EFD0009670A /* SettingsRowView.swift in Sources */,
