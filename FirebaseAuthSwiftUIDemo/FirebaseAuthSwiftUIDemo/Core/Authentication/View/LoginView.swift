@@ -11,6 +11,7 @@ struct LoginView: View {
     
     @State private var email = ""
     @State private var password = ""
+    @EnvironmentObject var viewModel: AuthViewModel
     
     var body: some View {
         // Wrap in a NavigationStack because we want to be able to move between the LoginView and RegistrationView.
@@ -34,7 +35,10 @@ struct LoginView: View {
                 
                 // MARK: Sign In Button
                 Button {
-                    print("Log user in...")
+                    Task {
+                        // Because 'signIn' uses async await, we need to wrap it in a Task.
+                        try await viewModel.signIn(withEmail: email, password: password)
+                    }
                 } label: {
                     HStack {
                         Text("SIGN IN")

@@ -21,11 +21,11 @@ class AuthViewModel: ObservableObject {
     
     // `async throws` indicates that the asynchronous function can also throw errors.
     func signIn(withEmail email: String, password: String) async throws {
-        
+        print("Sign in..")
     }
     
     func createUser(withEmail email: String, password: String, fullname: String) async throws {
-        
+        print("Create user..")
     }
     
     func signOut() {

@@ -14,6 +14,7 @@ struct RegistrationView: View {
     @State private var password = ""
     @State private var confirmPassword = ""
     @Environment(\.dismiss) var dismiss
+    @EnvironmentObject var viewModel: AuthViewModel
     
     var body: some View {
         VStack {
@@ -37,7 +38,10 @@ struct RegistrationView: View {
             
             // MARK: Sign Up Button
             Button {
-                print("Sign user up...")
+                Task {
+                    // Because 'createUser' uses async await, we need to wrap it in a Task.
+                    try await viewModel.createUser(withEmail: email, password: password, fullname: fullname)
+                }
             } label: {
                 HStack {
                     Text("SIGN UP")
