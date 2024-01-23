@@ -8,14 +8,18 @@
 import SwiftUI
 
 struct ContentView: View {
+    
+    @EnvironmentObject var viewModel: AuthViewModel
+    
     var body: some View {
-        VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundColor(.accentColor)
-            Text("Hello, world!")
+        Group {
+            // Use presentation logic to show ProfileView if the user is logged in or show LoginView if not logged in. 
+            if viewModel.userSession != nil {
+                ProfileView()
+            } else {
+                LoginView()
+            }
         }
-        .padding()
     }
 }
 
