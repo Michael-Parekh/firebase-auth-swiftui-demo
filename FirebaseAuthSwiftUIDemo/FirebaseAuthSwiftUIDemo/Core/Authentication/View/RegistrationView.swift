@@ -31,7 +31,25 @@ struct RegistrationView: View {
                     .autocapitalization(.none)
                 InputView(text: $fullname, title: "Full Name", placeholder: "Enter your full name")
                 InputView(text: $password, title: "Password", placeholder: "Enter your password", isSecureField: true)
-                InputView(text: $confirmPassword, title: "Confirm Password", placeholder: "Confirm your password", isSecureField: true)
+                
+                ZStack(alignment: .trailing) {
+                    InputView(text: $confirmPassword, title: "Confirm Password", placeholder: "Confirm your password", isSecureField: true)
+                    
+                    // Display an indicator for whether or not the password fields are equivalent.
+                    if !password.isEmpty && !confirmPassword.isEmpty {
+                        if password == confirmPassword {
+                            Image(systemName: "checkmark.circle.fill")
+                                .imageScale(.large)
+                                .fontWeight(.bold)
+                                .foregroundColor(Color(.systemGreen))
+                        } else {
+                            Image(systemName: "xmark.circle.fill")
+                                .imageScale(.large)
+                                .fontWeight(.bold)
+                                .foregroundColor(Color(.systemRed))
+                        }
+                    }
+                }
             }
             .padding(.horizontal)
             .padding(.top, 12)
