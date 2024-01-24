@@ -32,7 +32,14 @@ class AuthViewModel: ObservableObject {
     
     // `async throws` indicates that the asynchronous function can also throw errors.
     func signIn(withEmail email: String, password: String) async throws {
-        print("Sign in..")
+        do {
+            let result = try await Auth.auth().signIn(withEmail: email, password: password)
+            // Setting the 'userSession' redirects us to ProfileView.
+            self.userSession = result.user
+            await fetchUser()
+        } catch {
+            print("DEBUG: Failed to log in with error \(error.localizedDescription)")
+        }
     }
     
     func createUser(withEmail email: String, password: String, fullname: String) async throws {
