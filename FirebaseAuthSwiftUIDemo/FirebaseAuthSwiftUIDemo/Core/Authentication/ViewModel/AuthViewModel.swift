@@ -54,7 +54,15 @@ class AuthViewModel: ObservableObject {
     }
     
     func signOut() {
-        
+        do {
+            // Signs out user on the Firebase backend.
+            try Auth.auth().signOut()
+            // Wipes out user session and takes us back to LoginView because presentation logic in ContentView is dependent on 'userSession'.
+            self.userSession = nil
+            self.currentUser = nil
+        } catch {
+            print("DEBUG: Failed to sign out with error \(error.localizedDescription)")
+        }
     }
     
     func deleteAccount() {
