@@ -12,6 +12,11 @@ import FirebaseFirestoreSwift
 // Responsible for functionality associated with authenticating users (making the network calls) + updating the UI as needed.
 // Conforms to the ObservableObject protocol so that our view will be able to observe changes on AuthViewModel.
 
+// Everywhere we have a form, we need to conform to AuthenticationFormProtocol and implement the logic for whether that form is valid.
+protocol AuthenticationFormProtocol {
+    var formIsValid: Bool { get }
+}
+
 // We need to publish all UI updates back on the main thread (by default, all of the asynchronous networking events happens on background threads).
 @MainActor
 class AuthViewModel: ObservableObject {

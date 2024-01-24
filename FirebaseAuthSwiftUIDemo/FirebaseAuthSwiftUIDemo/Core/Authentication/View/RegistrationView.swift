@@ -52,6 +52,8 @@ struct RegistrationView: View {
                 .frame(width: UIScreen.main.bounds.width - 32, height: 48)
             }
             .background(Color(.systemPink))
+            .disabled(!formIsValid)
+            .opacity(formIsValid ? 1.0 : 0.5)
             .cornerRadius(10)
             .padding(.top, 24)
             
@@ -71,6 +73,19 @@ struct RegistrationView: View {
                 .foregroundColor(.pink)
             }
         }
+    }
+}
+
+// MARK: AuthenticationFormProtocol
+extension RegistrationView: AuthenticationFormProtocol {
+    // The 'formIsValid' property in AuthViewModel is dependent on these conditions we set.
+    var formIsValid: Bool {
+        return !email.isEmpty
+        && email.contains("@")
+        && !password.isEmpty
+        && password.count > 5
+        && confirmPassword == password
+        && !fullname.isEmpty
     }
 }
 
