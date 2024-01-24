@@ -23,6 +23,11 @@ class AuthViewModel: ObservableObject {
     init() {
         // When the AuthViewModel initializes, it will check if there is already a logged in user.
         self.userSession = Auth.auth().currentUser
+        
+        // Try to fetch the current User right away.
+        Task {
+            await fetchUser()
+        }
     }
     
     // `async throws` indicates that the asynchronous function can also throw errors.
@@ -41,6 +46,8 @@ class AuthViewModel: ObservableObject {
             let encodedUser = try Firestore.Encoder().encode(user)
             // Store the encoded User object in Firestore.
             try await Firestore.firestore().collection("users").document(user.id).setData(encodedUser)
+            // Fetch the User data that we just created so that it can be displayed in ProfileView.
+            await fetchUser()
         } catch {
             print("DEBUG: Failed to create user with error \(error.localizedDescription)")
         }
@@ -54,9 +61,11 @@ class AuthViewModel: ObservableObject {
         
     }
     
-    // Fetch the current User object.
+    // Fetch the User object from Firestore for the currently logged in user.
     func fetchUser() async {
-        
+        guard let uid = Auth.auth().currentUser?.uid else { return }
+        guard let snapshot = try? await Firestore.firestore().collection("users").document(uid).getDocument() else { return }
+        self.currentUser = try? snapshot.data(as: User.self)
     }
 }
 

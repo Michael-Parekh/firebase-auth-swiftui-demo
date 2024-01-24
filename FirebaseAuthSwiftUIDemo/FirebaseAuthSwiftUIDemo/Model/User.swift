@@ -8,6 +8,7 @@
 import Foundation
 
 // For any app that requires authentication, we need to create a data model representing a User object.
+// The Codable protocol allows us to encode/decode User object data so that it can be stored in Firestore. 
 struct User: Identifiable, Codable {
     let id: String
     let fullname: String
